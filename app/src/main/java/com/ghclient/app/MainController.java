@@ -34,6 +34,7 @@ public class MainController extends BaseController {
 
     private Router contentRouter;
     private Router drawerRouter;
+    private ActionBarDrawerToggle drawerToggle;
 
     @Override
     protected View inflateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container) {
@@ -60,15 +61,15 @@ public class MainController extends BaseController {
             drawerRouter.setRoot(RouterTransaction.with(new DrawerController()));
         }
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(getAppCompatActivity(), drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+        drawerToggle = new ActionBarDrawerToggle(getAppCompatActivity(), drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 super.onDrawerSlide(drawerView, 0);
             }
         };
 
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
+        drawerLayout.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
 
         // // new IconicsDrawable(this).icon(Octicons.Icon.oct_code).color(Color.WHITE)
     }
@@ -80,5 +81,10 @@ public class MainController extends BaseController {
             return true;
         }
         return super.handleBack();
+    }
+
+    public void setDrawerEnabled(boolean enabled) {
+        drawerLayout.setDrawerLockMode(enabled ? DrawerLayout.LOCK_MODE_UNLOCKED : DrawerLayout.LOCK_MODE_LOCKED_CLOSED, GravityCompat.START);
+        drawerToggle.setDrawerIndicatorEnabled(enabled);
     }
 }

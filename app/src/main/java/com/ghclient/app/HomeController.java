@@ -11,7 +11,7 @@ import com.bluelinelabs.conductor.changehandler.HorizontalChangeHandler;
 
 import butterknife.BindView;
 
-public class HomeController extends BaseController {
+public class HomeController extends ContentController {
 
     @BindView(R.id.controller_home_repository_home_button)
     Button repositoryHomeButton;
@@ -28,7 +28,14 @@ public class HomeController extends BaseController {
             @Override
             public void onClick(View view) {
                 getRouter().pushController(RouterTransaction.with(new RepositoryHomeController()).pushChangeHandler(new HorizontalChangeHandler()).popChangeHandler(new HorizontalChangeHandler()));
+                getMainController().setDrawerEnabled(false);
             }
         });
+    }
+
+    @Override
+    protected void onAttach(@NonNull View view) {
+        super.onAttach(view);
+        getMainController().setDrawerEnabled(true);
     }
 }
