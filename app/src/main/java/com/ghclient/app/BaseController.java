@@ -2,6 +2,7 @@ package com.ghclient.app;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,5 +47,9 @@ public abstract class BaseController extends RxController {
     protected void onDestroy() {
         super.onDestroy();
         App.refWatcher.watch(this);
+    }
+
+    protected AppCompatActivity getAppCompatActivity() {
+        return (AppCompatActivity) getActivity();
     }
 }
