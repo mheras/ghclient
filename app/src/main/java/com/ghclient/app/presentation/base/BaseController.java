@@ -1,4 +1,4 @@
-package com.ghclient.app;
+package com.ghclient.app.presentation.base;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,16 +8,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bluelinelabs.conductor.rxlifecycle.RxController;
+import com.ghclient.app.App;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public abstract class BaseController extends RxController {
+public abstract class BaseController<P extends BasePresenter<V>, V extends IView> extends RxController implements IView {
+
+    private P presenter;
 
     private Unbinder unbinder;
 
-    protected BaseController() {
-    }
+    protected BaseController() {}
 
     protected BaseController(Bundle args) {
         super(args);
@@ -35,6 +37,7 @@ public abstract class BaseController extends RxController {
     }
 
     protected void onViewBound(@NonNull View view) {
+        // Override if needed.
     }
 
     @Override
@@ -51,5 +54,9 @@ public abstract class BaseController extends RxController {
 
     protected AppCompatActivity getAppCompatActivity() {
         return (AppCompatActivity) getActivity();
+    }
+
+    protected P getPresenter() {
+        return presenter;
     }
 }

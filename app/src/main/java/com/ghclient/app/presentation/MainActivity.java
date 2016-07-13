@@ -1,4 +1,4 @@
-package com.ghclient.app;
+package com.ghclient.app.presentation;
 
 import android.os.Bundle;
 import android.support.v4.view.LayoutInflaterCompat;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import com.bluelinelabs.conductor.Conductor;
 import com.bluelinelabs.conductor.Router;
 import com.bluelinelabs.conductor.RouterTransaction;
+import com.ghclient.app.R;
+import com.ghclient.app.presentation.main.MainController;
 import com.mikepenz.iconics.context.IconicsLayoutInflater;
 
 import butterknife.BindView;
