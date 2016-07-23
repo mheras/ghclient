@@ -4,44 +4,59 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.bluelinelabs.conductor.rxlifecycle.RxController;
 import com.ghclient.app.App;
+import com.ghclient.app.di.AppComponent;
+import com.ghclient.app.di.base.BaseControllerComponent;
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public abstract class BaseController<P extends BasePresenter<V>, V extends IView> extends RxController implements IView {
+public abstract class BaseController<PresenterType extends BasePresenter<ViewType>, ViewType extends View, ControllerType extends BaseController<PresenterType, ViewType, ControllerType>> extends RxController implements View {
 
-    private P presenter;
-
+    @Inject
+    PresenterType presenter;
+    private BaseControllerComponent<ControllerType> controllerComponent;
     private Unbinder unbinder;
 
-    protected BaseController() {}
+    protected BaseController() {
+        this(null);
+    }
 
     protected BaseController(Bundle args) {
         super(args);
+        controllerComponent = createControllerComponent(App.getAppComponent());
+        if (controllerComponent != null) {
+            // noinspection unchecked
+            controllerComponent.inject((ControllerType) this);
+        }
     }
 
-    protected abstract View inflateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container);
+    protected BaseControllerComponent<ControllerType> createControllerComponent(AppComponent appComponent) {
+        return null;
+    }
+
+    protected abstract android.view.View inflateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container);
 
     @NonNull
     @Override
-    protected View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container) {
-        View view = inflateView(inflater, container);
+    protected android.view.View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container) {
+        android.view.View view = inflateView(inflater, container);
         unbinder = ButterKnife.bind(this, view);
         onViewBound(view);
         return view;
     }
 
-    protected void onViewBound(@NonNull View view) {
+    protected void onViewBound(@NonNull android.view.View view) {
         // Override if needed.
     }
 
     @Override
-    protected void onDestroyView(View view) {
+    protected void onDestroyView(android.view.View view) {
         super.onDestroyView(view);
         unbinder.unbind();
     }
@@ -49,14 +64,14 @@ public abstract class BaseController<P extends BasePresenter<V>, V extends IView
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        App.refWatcher.watch(this);
+        App.getRefWatcher().watch(this);
     }
 
     protected AppCompatActivity getAppCompatActivity() {
         return (AppCompatActivity) getActivity();
     }
 
-    protected P getPresenter() {
+    protected PresenterType getPresenter() {
         return presenter;
     }
 }

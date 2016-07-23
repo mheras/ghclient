@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/controller_list_recycler_view"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/controller_list_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ISSUE DETAILS"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/controller_list_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>

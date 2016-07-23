@@ -6,18 +6,27 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.bluelinelabs.conductor.RouterTransaction;
+import com.bluelinelabs.conductor.changehandler.HorizontalChangeHandler;
 import com.ghclient.app.R;
 import com.ghclient.app.presentation.base.ContentController;
+import com.ghclient.app.presentation.repository.issues.IssueDetailsController;
 
 import butterknife.BindView;
 
-public abstract class ListController<P extends ListPresenter<V>, V extends IListView> extends ContentController<P, V> implements IListView {
+public abstract class ListController<PresenterType extends ListPresenter<ViewType>, ViewType extends ListView, ControllerType extends ListController<PresenterType, ViewType, ControllerType>> extends ContentController<PresenterType, ViewType, ControllerType> implements ListView {
 
     @BindView(R.id.controller_list_recycler_view)
     RecyclerView recyclerView;
 
-    protected ListController() {}
+    @BindView(R.id.controller_list_button)
+    Button button;
+
+    protected ListController() {
+        this(null);
+    }
 
     protected ListController(Bundle args) {
         super(args);
@@ -31,5 +40,11 @@ public abstract class ListController<P extends ListPresenter<V>, V extends IList
     @Override
     protected void onViewBound(@NonNull View view) {
         super.onViewBound(view);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getRouter().pushController(RouterTransaction.with(new IssueDetailsController()).pushChangeHandler(new HorizontalChangeHandler()).popChangeHandler(new HorizontalChangeHandler()));
+            }
+        });
     }
 }
