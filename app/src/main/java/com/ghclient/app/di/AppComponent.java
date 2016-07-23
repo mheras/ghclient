@@ -1,10 +1,18 @@
 package com.ghclient.app.di;
 
 import com.ghclient.app.App;
-import com.ghclient.app.di.base.BaseComponent;
+import com.ghclient.app.di.base.IComponent;
+import com.ghclient.app.di.base.scope.AppScope;
 
 import dagger.Component;
+import retrofit2.Retrofit;
 
-@Component()
-public interface AppComponent extends BaseComponent<App> {
+@AppScope
+@Component(modules = AppModule.class)
+public interface AppComponent extends IComponent<App> {
+
+    App app();
+
+    Retrofit retrofit();
+
 }

@@ -9,18 +9,18 @@ import android.view.ViewGroup;
 import com.bluelinelabs.conductor.rxlifecycle.RxController;
 import com.ghclient.app.App;
 import com.ghclient.app.di.AppComponent;
-import com.ghclient.app.di.base.BaseControllerComponent;
+import com.ghclient.app.di.base.IControllerComponent;
 
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public abstract class BaseController<PresenterType extends BasePresenter<ViewType>, ViewType extends View, ControllerType extends BaseController<PresenterType, ViewType, ControllerType>> extends RxController implements View {
+public abstract class BaseController<PresenterType extends BasePresenter<ViewType>, ViewType extends IView, ControllerType extends BaseController<PresenterType, ViewType, ControllerType>> extends RxController implements IView {
 
     @Inject
     PresenterType presenter;
-    private BaseControllerComponent<ControllerType> controllerComponent;
+    private IControllerComponent<ControllerType> controllerComponent;
     private Unbinder unbinder;
 
     protected BaseController() {
@@ -36,7 +36,7 @@ public abstract class BaseController<PresenterType extends BasePresenter<ViewTyp
         }
     }
 
-    protected BaseControllerComponent<ControllerType> createControllerComponent(AppComponent appComponent) {
+    protected IControllerComponent<ControllerType> createControllerComponent(AppComponent appComponent) {
         return null;
     }
 

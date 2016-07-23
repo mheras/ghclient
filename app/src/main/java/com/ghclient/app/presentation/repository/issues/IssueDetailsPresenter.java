@@ -4,7 +4,7 @@ import com.ghclient.app.presentation.base.BasePresenter;
 
 import javax.inject.Inject;
 
-public class IssueDetailsPresenter extends BasePresenter<IssueDetailsView> {
+public class IssueDetailsPresenter extends BasePresenter<IIssueDetailsView> {
 
     @Inject
     public IssueDetailsPresenter() {

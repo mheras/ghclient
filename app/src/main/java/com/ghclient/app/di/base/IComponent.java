@@ -1,5 +1,5 @@
 package com.ghclient.app.di.base;
 
-public interface BaseComponent<InjectableType> {
+public interface IComponent<InjectableType> {
     void inject(InjectableType injectableType);
 }

@@ -2,7 +2,9 @@ package com.ghclient.app;
 
 import android.app.Application;
 
+import com.facebook.stetho.Stetho;
 import com.ghclient.app.di.AppComponent;
+import com.ghclient.app.di.AppModule;
 import com.ghclient.app.di.DaggerAppComponent;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
@@ -24,7 +26,8 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         refWatcher = LeakCanary.install(this);
-        appComponent = DaggerAppComponent.create();
+        Stetho.initializeWithDefaults(this);
+        appComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
     }
 
 }
