@@ -2,8 +2,10 @@ package com.ghclient.app.presentation.base;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.bluelinelabs.conductor.rxlifecycle.RxController;
@@ -62,8 +64,23 @@ public abstract class BaseController<PresenterType extends IPresenter<ViewType>,
     }
 
     @Override
+    protected void onAttach(@NonNull View view) {
+        super.onAttach(view);
+        // noinspection unchecked
+        getPresenter().onAttachView((ViewType) this);
+    }
+
+    @Override
+    protected void onDetach(@NonNull View view) {
+        super.onDetach(view);
+        getPresenter().onDetachView();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
+        getPresenter().onDestroy();
+        controllerComponent = null;
         App.getRefWatcher().watch(this);
     }
 
@@ -73,5 +90,11 @@ public abstract class BaseController<PresenterType extends IPresenter<ViewType>,
 
     protected PresenterType getPresenter() {
         return presenter;
+    }
+
+    @Override
+    public void showError(Throwable throwable) {
+        // TODO: strings.xml
+        Snackbar.make(getView(), "An error has ocurred", Snackbar.LENGTH_SHORT).show();
     }
 }

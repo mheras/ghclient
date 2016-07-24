@@ -19,7 +19,7 @@ public class EventsInteractor implements IEventsInteractor {
     }
 
     @Override
-    public Observable<List<Event>> getReceivedEvents(String username, int page) {
-        return eventsRepository.getReceivedEvents(username, page);
+    public Observable<List<Event>> createReceivedEventsObservable(String username, int page) {
+        return eventsRepository.createReceivedEventsObservable(username, page);
     }
 }

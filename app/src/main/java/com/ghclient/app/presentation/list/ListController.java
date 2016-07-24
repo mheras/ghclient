@@ -14,9 +14,11 @@ import com.ghclient.app.R;
 import com.ghclient.app.presentation.base.ContentController;
 import com.ghclient.app.presentation.repository.issues.IssueDetailsController;
 
+import java.util.List;
+
 import butterknife.BindView;
 
-public abstract class ListController<PresenterType extends IListPresenter<ViewType>, ViewType extends IListView, ControllerType extends ListController<PresenterType, ViewType, ControllerType>> extends ContentController<PresenterType, ViewType, ControllerType> implements IListView {
+public abstract class ListController<PresenterType extends IListPresenter<ViewType, DataType>, ViewType extends IListView<DataType>, ControllerType extends ListController<PresenterType, ViewType, ControllerType, DataType>, DataType> extends ContentController<PresenterType, ViewType, ControllerType> implements IListView<DataType> {
 
     @BindView(R.id.controller_list_recycler_view)
     RecyclerView recyclerView;
@@ -46,5 +48,10 @@ public abstract class ListController<PresenterType extends IListPresenter<ViewTy
                 getRouter().pushController(RouterTransaction.with(new IssueDetailsController()).pushChangeHandler(new HorizontalChangeHandler()).popChangeHandler(new HorizontalChangeHandler()));
             }
         });
+    }
+
+    @Override
+    public void refreshData(List<DataType> content) {
+        // TODO: Implement
     }
 }

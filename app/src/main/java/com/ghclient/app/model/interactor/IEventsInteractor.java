@@ -7,5 +7,5 @@ import java.util.List;
 import rx.Observable;
 
 public interface IEventsInteractor {
-    Observable<List<Event>> getReceivedEvents(String username, int page);
+    Observable<List<Event>> createReceivedEventsObservable(String username, int page);
 }

@@ -6,10 +6,11 @@ import com.ghclient.app.di.AppComponent;
 import com.ghclient.app.di.base.IControllerComponent;
 import com.ghclient.app.di.user.events.DaggerEventsComponent;
 import com.ghclient.app.di.user.events.EventsModule;
+import com.ghclient.app.model.entity.Event;
 import com.ghclient.app.presentation.list.ListController;
 import com.ghclient.app.util.BundleBuilder;
 
-public class EventsController extends ListController<IEventsPresenter, IEventsView, EventsController> implements IEventsView {
+public class EventsController extends ListController<IEventsPresenter, IEventsView, EventsController, Event> implements IEventsView {
 
     private final static String USERNAME_KEY = "username";
 

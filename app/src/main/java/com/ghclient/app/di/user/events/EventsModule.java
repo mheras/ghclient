@@ -30,7 +30,7 @@ public class EventsModule {
     @ControllerScope
     @Provides
     IEventsPresenter provideEventsPresenter(IEventsInteractor eventsInteractor) {
-        return new EventsPresenter(eventsInteractor);
+        return new EventsPresenter(eventsInteractor, 30);
     }
 
 }

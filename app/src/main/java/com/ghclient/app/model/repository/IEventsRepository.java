@@ -12,6 +12,6 @@ import rx.Observable;
 public interface IEventsRepository {
 
     @GET("users/{username}/received_events")
-    Observable<List<Event>> getReceivedEvents(@Path("username") String username, @Query("page") int page);
+    Observable<List<Event>> createReceivedEventsObservable(@Path("username") String username, @Query("page") int page);
 
 }
