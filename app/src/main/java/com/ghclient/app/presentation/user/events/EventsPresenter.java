@@ -9,18 +9,15 @@ import com.ghclient.app.presentation.list.ListPresenter;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import javax.inject.Inject;
-
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 
-public class EventsPresenter extends ListPresenter<IEventsView> {
+public class EventsPresenter extends ListPresenter<IEventsView> implements IEventsPresenter {
 
     private IEventsInteractor eventsInteractor;
 
-    @Inject
     public EventsPresenter(IEventsInteractor eventsInteractor) {
 
         this.eventsInteractor = eventsInteractor;

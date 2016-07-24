@@ -1,4 +1,4 @@
 package com.ghclient.app.presentation.base;
 
-public abstract class BasePresenter<ViewType extends IView> {
+public abstract class BasePresenter<ViewType extends IView> implements IPresenter<ViewType> {
 }

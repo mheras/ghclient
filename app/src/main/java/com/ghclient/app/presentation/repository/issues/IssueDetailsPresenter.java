@@ -2,11 +2,8 @@ package com.ghclient.app.presentation.repository.issues;
 
 import com.ghclient.app.presentation.base.BasePresenter;
 
-import javax.inject.Inject;
+public class IssueDetailsPresenter extends BasePresenter<IIssueDetailsView> implements IIssueDetailsPresenter {
 
-public class IssueDetailsPresenter extends BasePresenter<IIssueDetailsView> {
-
-    @Inject
     public IssueDetailsPresenter() {
     }
 }

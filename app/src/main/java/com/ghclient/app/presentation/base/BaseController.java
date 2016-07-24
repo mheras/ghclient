@@ -16,7 +16,7 @@ import javax.inject.Inject;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public abstract class BaseController<PresenterType extends BasePresenter<ViewType>, ViewType extends IView, ControllerType extends BaseController<PresenterType, ViewType, ControllerType>> extends RxController implements IView {
+public abstract class BaseController<PresenterType extends IPresenter<ViewType>, ViewType extends IView, ControllerType extends BaseController<PresenterType, ViewType, ControllerType>> extends RxController implements IView {
 
     @Inject
     PresenterType presenter;

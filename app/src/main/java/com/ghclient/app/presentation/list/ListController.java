@@ -16,7 +16,7 @@ import com.ghclient.app.presentation.repository.issues.IssueDetailsController;
 
 import butterknife.BindView;
 
-public abstract class ListController<PresenterType extends ListPresenter<ViewType>, ViewType extends IListView, ControllerType extends ListController<PresenterType, ViewType, ControllerType>> extends ContentController<PresenterType, ViewType, ControllerType> implements IListView {
+public abstract class ListController<PresenterType extends IListPresenter<ViewType>, ViewType extends IListView, ControllerType extends ListController<PresenterType, ViewType, ControllerType>> extends ContentController<PresenterType, ViewType, ControllerType> implements IListView {
 
     @BindView(R.id.controller_list_recycler_view)
     RecyclerView recyclerView;

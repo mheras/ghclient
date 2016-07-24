@@ -17,7 +17,7 @@ import com.ghclient.app.presentation.user.events.EventsController;
 
 import butterknife.BindView;
 
-public class MainController extends BaseController<MainPresenter, IMainView, MainController> implements IMainView {
+public class MainController extends BaseController<IMainPresenter, IMainView, MainController> implements IMainView {
 
     private final static String CONTENT_ROUTER_TAG = "content";
 

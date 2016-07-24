@@ -11,7 +11,7 @@ import com.ghclient.app.di.base.IControllerComponent;
 import com.ghclient.app.di.repository.issues.DaggerIssueDetailsComponent;
 import com.ghclient.app.presentation.base.BaseController;
 
-public class IssueDetailsController extends BaseController<IssueDetailsPresenter, IIssueDetailsView, IssueDetailsController> implements IIssueDetailsView {
+public class IssueDetailsController extends BaseController<IIssueDetailsPresenter, IIssueDetailsView, IssueDetailsController> implements IIssueDetailsView {
 
     @Override
     protected IControllerComponent<IssueDetailsController> createControllerComponent(AppComponent appComponent) {

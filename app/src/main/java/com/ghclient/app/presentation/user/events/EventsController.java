@@ -9,7 +9,7 @@ import com.ghclient.app.di.user.events.EventsModule;
 import com.ghclient.app.presentation.list.ListController;
 import com.ghclient.app.util.BundleBuilder;
 
-public class EventsController extends ListController<EventsPresenter, IEventsView, EventsController> implements IEventsView {
+public class EventsController extends ListController<IEventsPresenter, IEventsView, EventsController> implements IEventsView {
 
     private final static String USERNAME_KEY = "username";
 

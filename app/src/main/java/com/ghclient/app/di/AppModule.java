@@ -45,9 +45,4 @@ public class AppModule {
         return app;
     }
 
-    void provide() {
-        OkHttpClient client = new OkHttpClient();
-        client.networkInterceptors().add(new StethoInterceptor());
-    }
-
 }
