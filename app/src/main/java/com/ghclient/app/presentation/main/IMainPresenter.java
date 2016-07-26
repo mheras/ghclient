@@ -1,6 +1,6 @@
 package com.ghclient.app.presentation.main;
 
-import com.ghclient.app.presentation.base.IPresenter;
+import com.ghclient.app.presentation.common.base.IPresenter;
 
 public interface IMainPresenter extends IPresenter<IMainView> {
 }

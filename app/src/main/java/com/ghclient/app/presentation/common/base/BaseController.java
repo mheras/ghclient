@@ -1,4 +1,4 @@
-package com.ghclient.app.presentation.base;
+package com.ghclient.app.presentation.common.base;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -42,38 +42,25 @@ public abstract class BaseController<PresenterType extends IPresenter<ViewType>,
         return null;
     }
 
-    protected abstract android.view.View inflateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container);
+    protected abstract View inflateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container);
 
     @NonNull
     @Override
-    protected android.view.View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container) {
-        android.view.View view = inflateView(inflater, container);
+    protected View onCreateView(@NonNull LayoutInflater inflater, @NonNull ViewGroup container) {
+        View view = inflateView(inflater, container);
         unbinder = ButterKnife.bind(this, view);
         onViewBound(view);
         return view;
     }
 
-    protected void onViewBound(@NonNull android.view.View view) {
+    protected void onViewBound(@NonNull View view) {
         // Override if needed.
     }
 
     @Override
-    protected void onDestroyView(android.view.View view) {
+    protected void onDestroyView(View view) {
         super.onDestroyView(view);
         unbinder.unbind();
-    }
-
-    @Override
-    protected void onAttach(@NonNull View view) {
-        super.onAttach(view);
-        // noinspection unchecked
-        getPresenter().onAttachView((ViewType) this);
-    }
-
-    @Override
-    protected void onDetach(@NonNull View view) {
-        super.onDetach(view);
-        getPresenter().onDetachView();
     }
 
     @Override
@@ -95,6 +82,6 @@ public abstract class BaseController<PresenterType extends IPresenter<ViewType>,
     @Override
     public void showError(Throwable throwable) {
         // TODO: strings.xml
-        Snackbar.make(getView(), "An error has ocurred", Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(getView(), "An error has occurred", Snackbar.LENGTH_SHORT).show();
     }
 }

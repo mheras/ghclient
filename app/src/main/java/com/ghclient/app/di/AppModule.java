@@ -1,5 +1,7 @@
 package com.ghclient.app.di;
 
+import android.content.Context;
+
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.ghclient.app.App;
 import com.ghclient.app.di.base.scope.AppScope;
@@ -43,6 +45,12 @@ public class AppModule {
     @Provides
     App provideApp() {
         return app;
+    }
+
+    @AppScope
+    @Provides
+    Context provideAppContext() {
+        return app.getApplicationContext();
     }
 
 }

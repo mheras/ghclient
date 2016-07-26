@@ -1,4 +1,4 @@
-package com.ghclient.app.model.repository;
+package com.ghclient.app.model.api;
 
 import com.ghclient.app.model.entity.Event;
 
@@ -9,9 +9,9 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 
-public interface IEventsRepository {
+public interface IEventsApi {
 
     @GET("users/{username}/received_events")
-    Observable<List<Event>> createReceivedEventsObservable(@Path("username") String username, @Query("page") int page);
+    Observable<List<Event>> receivedEvents(@Path("username") String username, @Query("page") int page);
 
 }

@@ -12,7 +12,9 @@ import com.bluelinelabs.conductor.RouterTransaction;
 import com.ghclient.app.R;
 import com.ghclient.app.di.AppComponent;
 import com.ghclient.app.di.base.IControllerComponent;
-import com.ghclient.app.presentation.base.BaseController;
+import com.ghclient.app.di.main.DaggerMainComponent;
+import com.ghclient.app.di.main.MainModule;
+import com.ghclient.app.presentation.common.base.BaseController;
 import com.ghclient.app.presentation.user.events.EventsController;
 
 import butterknife.BindView;
@@ -31,7 +33,7 @@ public class MainController extends BaseController<IMainPresenter, IMainView, Ma
 
     @Override
     protected IControllerComponent<MainController> createControllerComponent(AppComponent appComponent) {
-        return null;
+        return DaggerMainComponent.builder().appComponent(appComponent).mainModule(new MainModule(this)).build();
     }
 
     @Override

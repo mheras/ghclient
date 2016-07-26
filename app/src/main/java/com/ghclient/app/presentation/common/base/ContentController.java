@@ -1,4 +1,4 @@
-package com.ghclient.app.presentation.base;
+package com.ghclient.app.presentation.common.base;
 
 import android.os.Bundle;
 
