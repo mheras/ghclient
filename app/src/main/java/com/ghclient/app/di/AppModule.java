@@ -6,12 +6,12 @@ import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.ghclient.app.App;
 import com.ghclient.app.di.base.scope.AppScope;
 import com.google.gson.Gson;
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
@@ -38,7 +38,7 @@ public class AppModule {
     @AppScope
     @Provides
     Retrofit provideRetrofit(OkHttpClient httpClient, Gson gson) {
-        return new Retrofit.Builder().baseUrl("https://api.github.com/").client(httpClient).addCallAdapterFactory(RxJavaCallAdapterFactory.create()).addConverterFactory(GsonConverterFactory.create(gson)).build();
+        return new Retrofit.Builder().baseUrl("https://api.github.com/").client(httpClient).addCallAdapterFactory(RxJava2CallAdapterFactory.create()).addConverterFactory(GsonConverterFactory.create(gson)).build();
     }
 
     @AppScope

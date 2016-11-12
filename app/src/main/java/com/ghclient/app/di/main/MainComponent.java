@@ -1,13 +1,13 @@
 package com.ghclient.app.di.main;
 
 import com.ghclient.app.di.AppComponent;
-import com.ghclient.app.di.base.IControllerComponent;
-import com.ghclient.app.di.base.scope.ControllerScope;
-import com.ghclient.app.presentation.main.MainController;
+import com.ghclient.app.di.base.IPresenterComponent;
+import com.ghclient.app.di.base.scope.PresenterScope;
+import com.ghclient.app.presentation.presenter.main.MainPresenter;
 
 import dagger.Component;
 
-@ControllerScope
+@PresenterScope
 @Component(dependencies = AppComponent.class, modules = MainModule.class)
-public interface MainComponent extends IControllerComponent<MainController> {
+public interface MainComponent extends IPresenterComponent<MainPresenter> {
 }

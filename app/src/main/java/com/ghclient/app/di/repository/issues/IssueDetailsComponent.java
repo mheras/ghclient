@@ -1,13 +1,13 @@
 package com.ghclient.app.di.repository.issues;
 
 import com.ghclient.app.di.AppComponent;
-import com.ghclient.app.di.base.IControllerComponent;
-import com.ghclient.app.di.base.scope.ControllerScope;
-import com.ghclient.app.presentation.repository.issues.IssueDetailsController;
+import com.ghclient.app.di.base.IPresenterComponent;
+import com.ghclient.app.di.base.scope.PresenterScope;
+import com.ghclient.app.presentation.presenter.repository.issues.IssueDetailsPresenter;
 
 import dagger.Component;
 
-@ControllerScope
+@PresenterScope
 @Component(dependencies = AppComponent.class, modules = IssueDetailsModule.class)
-public interface IssueDetailsComponent extends IControllerComponent<IssueDetailsController> {
+public interface IssueDetailsComponent extends IPresenterComponent<IssueDetailsPresenter> {
 }
