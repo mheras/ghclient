@@ -7,6 +7,7 @@ import android.support.v4.view.LayoutInflaterCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
@@ -15,12 +16,14 @@ import com.ghclient.app.presentation.presenter.common.base.IPresenter;
 import com.ghclient.app.presentation.view.common.base.IView;
 import com.mikepenz.iconics.context.IconicsLayoutInflater;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public abstract class BaseActivity<PresenterType extends IPresenter> extends MvpAppCompatActivity implements IView {
 
-    private ViewGroup container;
+    private View view;
 
     @BindView(R.id.activity_base_toolbar)
     Toolbar toolbar;
@@ -30,22 +33,34 @@ public abstract class BaseActivity<PresenterType extends IPresenter> extends Mvp
         LayoutInflaterCompat.setFactory(getLayoutInflater(), new IconicsLayoutInflater(getDelegate()));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
-        container = (ViewGroup) findViewById(R.id.activity_base_container);
-        container.addView(LayoutInflater.from(this).inflate(getActivityLayoutId(), container, false));
+        ViewGroup container = (ViewGroup) findViewById(R.id.activity_base_container);
+        view = LayoutInflater.from(this).inflate(getActivityLayoutId(), container, false);
+        View decoration = view;
+        List<IActivityDecorator> activityDecorators = createActivityDecorators();
+        if (activityDecorators != null) {
+            for (IActivityDecorator activityDecorator : activityDecorators) {
+                decoration = activityDecorator.decorateView(decoration, container);
+            }
+        }
+        container.addView(decoration);
         ButterKnife.bind(this);
         onViewBound(savedInstanceState);
     }
 
     protected abstract PresenterType getPresenter();
 
-    protected final ViewGroup getContainer() {
-        return container;
+    protected final View getView() {
+        return view;
+    }
+
+    protected List<IActivityDecorator> createActivityDecorators() {
+        return null;
     }
 
     @Override
     public void showError(Throwable throwable) {
         // TODO: strings.xml
-        Snackbar.make(getContainer(), "An error has occurred", Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(getView(), "An error has occurred", Snackbar.LENGTH_SHORT).show();
     }
 
     @LayoutRes

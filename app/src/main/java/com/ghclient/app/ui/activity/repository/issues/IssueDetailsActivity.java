@@ -19,6 +19,6 @@ public class IssueDetailsActivity extends BaseActivity<IIssueDetailsPresenter> i
 
     @Override
     protected int getActivityLayoutId() {
-        return R.layout.controller_issue_details;
+        return R.layout.activity_issue_details;
     }
 }

@@ -12,8 +12,13 @@ import com.ghclient.app.model.entity.Event;
 import com.ghclient.app.presentation.presenter.user.events.EventsPresenter;
 import com.ghclient.app.presentation.presenter.user.events.IEventsPresenter;
 import com.ghclient.app.presentation.view.user.events.IEventsView;
+import com.ghclient.app.ui.activity.common.base.IActivityDecorator;
 import com.ghclient.app.ui.activity.common.list.ListActivity;
 import com.ghclient.app.ui.activity.common.list.ListViewHolder;
+import com.ghclient.app.ui.activity.user.common.UserBottomNavigationActivityDecorator;
+
+import java.util.Collections;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -21,6 +26,11 @@ public class EventsActivity extends ListActivity<Event, EventsActivity.EventsVie
 
     @InjectPresenter
     EventsPresenter presenter;
+
+    @Override
+    protected List<IActivityDecorator> createActivityDecorators() {
+        return Collections.<IActivityDecorator>singletonList(new UserBottomNavigationActivityDecorator(this));
+    }
 
     @Override
     protected RecyclerView.LayoutManager createLayoutManager() {

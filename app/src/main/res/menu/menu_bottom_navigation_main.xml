@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_bottom_navigation_main_events"
+        android:enabled="true"
+        android:title="@string/menu_bottom_navigation_main_events"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/menu_bottom_navigation_main_pull_requests"
+        android:enabled="true"
+        android:title="@string/menu_bottom_navigation_main_pull_requests"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/menu_bottom_navigation_main_issues"
+        android:enabled="true"
+        android:title="@string/menu_bottom_navigation_main_issues"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/menu_bottom_navigation_main_repositories"
+        android:enabled="true"
+        android:title="@string/menu_bottom_navigation_main_repositories"
+        app:showAsAction="ifRoom"/>
+
+</menu>
