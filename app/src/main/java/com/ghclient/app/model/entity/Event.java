@@ -1,6 +1,8 @@
 package com.ghclient.app.model.entity;
 
-public class Event {
+import java.io.Serializable;
+
+public class Event implements Serializable {
 
     private String type;
 

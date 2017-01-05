@@ -3,16 +3,16 @@ package com.ghclient.app;
 import android.app.Application;
 
 import com.facebook.stetho.Stetho;
-import com.ghclient.app.di.AppComponent;
+import com.ghclient.app.di.DaggerIAppComponent;
+import com.ghclient.app.di.IAppComponent;
 import com.ghclient.app.di.AppModule;
-import com.ghclient.app.di.DaggerAppComponent;
 import com.squareup.leakcanary.LeakCanary;
 
 public class App extends Application {
 
-    private static AppComponent appComponent;
+    private static IAppComponent appComponent;
 
-    public static AppComponent getAppComponent() {
+    public static IAppComponent getAppComponent() {
         return appComponent;
     }
 
@@ -25,7 +25,7 @@ public class App extends Application {
             LeakCanary.install(this);
         }
         Stetho.initializeWithDefaults(this);
-        appComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
+        appComponent = DaggerIAppComponent.builder().appModule(new AppModule(this)).build();
     }
 
 }

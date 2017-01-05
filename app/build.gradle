@@ -27,18 +27,13 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     // Support Library
-    compile 'com.android.support:appcompat-v7:25.0.0'
-    compile 'com.android.support:recyclerview-v7:25.0.0'
-    compile 'com.android.support:design:25.0.0'
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support:recyclerview-v7:25.0.1'
+    compile 'com.android.support:design:25.0.1'
 
     // Iconics
     compile 'com.mikepenz:iconics-core:2.8.1@aar'
     compile 'com.mikepenz:octicons-typeface:3.2.0.2@aar'
-
-    // Moxy
-    compile 'com.arello-mobile:moxy:1.1.2'
-    compile 'com.arello-mobile:moxy-app-compat:1.1.2'
-    apt 'com.arello-mobile:moxy-compiler:1.1.2'
 
     // Paginate
     compile 'com.github.markomilos:paginate:0.5.1'
@@ -69,6 +64,9 @@ dependencies {
     // Stetho
     compile 'com.facebook.stetho:stetho:1.4.1'
     compile 'com.facebook.stetho:stetho-okhttp3:1.4.1'
+
+    // Conductor
+    compile 'com.bluelinelabs:conductor:2.0.4'
 
     // compile 'com.android.support:multidex:1.0.1'
 

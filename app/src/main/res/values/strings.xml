@@ -8,8 +8,9 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_bottom_navigation_main_events">Home</string>
-    <string name="menu_bottom_navigation_main_pull_requests">Pull Requests</string>
+    <string name="menu_bottom_navigation_main_pull_requests">PRs</string>
     <string name="menu_bottom_navigation_main_issues">Issues</string>
     <string name="menu_bottom_navigation_main_repositories">Repositories</string>
+    <string name="title_activity_main">MainActivity</string>
 
 </resources>
