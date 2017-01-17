@@ -32,13 +32,18 @@ public class EventsController extends ListController<IEventsPresenter, IEventsVi
     }
 
     @Override
+    protected Class<IEventsView> getViewClass() {
+        return IEventsView.class;
+    }
+
+    @Override
     protected int getLayoutResId() {
         return R.layout.controller_events;
     }
 
     @Override
-    protected IEventsComponent createControllerComponent() {
-        return DaggerIEventsComponent.builder().iAppComponent(App.getAppComponent()).eventsModule(new EventsModule(this)).build();
+    protected IEventsComponent createControllerComponent(IEventsView view) {
+        return DaggerIEventsComponent.builder().iAppComponent(App.getAppComponent()).eventsModule(new EventsModule(view)).build();
     }
 
     // TODO: It has package access for ButterKnife. Can we move it somewhere else?

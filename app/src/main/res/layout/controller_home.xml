@@ -11,4 +11,13 @@
         android:layout_centerInParent="true"
         android:text="EVENTS"/>
 
+    <TextView
+        android:id="@+id/controller_home_counter_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/controller_home_events_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"/>
+
 </RelativeLayout>

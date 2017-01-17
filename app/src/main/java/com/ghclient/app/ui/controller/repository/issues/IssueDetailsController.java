@@ -11,12 +11,17 @@ import com.ghclient.app.ui.controller.common.base.BaseController;
 public class IssueDetailsController extends BaseController<IIssueDetailsPresenter, IIssueDetailsView, IIssueDetailsComponent> implements IIssueDetailsView {
 
     @Override
+    protected Class<IIssueDetailsView> getViewClass() {
+        return IIssueDetailsView.class;
+    }
+
+    @Override
     protected int getLayoutResId() {
         return R.layout.controller_issue_details;
     }
 
     @Override
-    protected IIssueDetailsComponent createControllerComponent() {
+    protected IIssueDetailsComponent createControllerComponent(IIssueDetailsView view) {
         return DaggerIIssueDetailsComponent.builder().iAppComponent(App.getAppComponent()).build();
     }
 }

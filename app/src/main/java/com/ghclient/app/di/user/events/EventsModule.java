@@ -14,16 +14,16 @@ import retrofit2.Retrofit;
 @Module
 public class EventsModule {
 
-    private EventsController controller;
+    private IEventsView view;
 
-    public EventsModule(EventsController controller) {
-        this.controller = controller;
+    public EventsModule(IEventsView view) {
+        this.view = view;
     }
 
     @Provides
     @ControllerScope
     IEventsView provideView() {
-        return controller;
+        return view;
     }
 
     @Provides

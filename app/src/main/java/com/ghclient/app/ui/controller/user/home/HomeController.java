@@ -3,6 +3,7 @@ package com.ghclient.app.ui.controller.user.home;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.bluelinelabs.conductor.RouterTransaction;
 import com.bluelinelabs.conductor.changehandler.HorizontalChangeHandler;
@@ -23,14 +24,22 @@ public class HomeController extends BaseController<IHomePresenter, IHomeView, IH
     @BindView(R.id.controller_home_events_button)
     Button eventsButton;
 
+    @BindView(R.id.controller_home_counter_text_view)
+    TextView counterTextView;
+
+    @Override
+    protected Class<IHomeView> getViewClass() {
+        return IHomeView.class;
+    }
+
     @Override
     protected int getLayoutResId() {
         return R.layout.controller_home;
     }
 
     @Override
-    protected IHomeComponent createControllerComponent() {
-        return DaggerIHomeComponent.builder().iAppComponent(App.getAppComponent()).homeModule(new HomeModule(this)).build();
+    protected IHomeComponent createControllerComponent(IHomeView view) {
+        return DaggerIHomeComponent.builder().iAppComponent(App.getAppComponent()).homeModule(new HomeModule(view)).build();
     }
 
     @Override
@@ -42,5 +51,10 @@ public class HomeController extends BaseController<IHomePresenter, IHomeView, IH
                 getRouter().pushController(RouterTransaction.with(new EventsController()).pushChangeHandler(new HorizontalChangeHandler()).popChangeHandler(new HorizontalChangeHandler()));
             }
         });
+    }
+
+    @Override
+    public void setCounter(int counter) {
+        counterTextView.setText(String.valueOf(counter));
     }
 }

@@ -12,16 +12,16 @@ import dagger.Provides;
 @Module
 public class HomeModule {
 
-    private HomeController controller;
+    private IHomeView view;
 
-    public HomeModule(HomeController controller) {
-        this.controller = controller;
+    public HomeModule(IHomeView view) {
+        this.view = view;
     }
 
     @Provides
     @ControllerScope
     IHomeView provideView() {
-        return controller;
+        return view;
     }
 
     @Provides

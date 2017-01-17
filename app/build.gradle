@@ -27,9 +27,9 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     // Support Library
-    compile 'com.android.support:appcompat-v7:25.0.1'
-    compile 'com.android.support:recyclerview-v7:25.0.1'
-    compile 'com.android.support:design:25.0.1'
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.android.support:recyclerview-v7:25.1.0'
+    compile 'com.android.support:design:25.1.0'
 
     // Iconics
     compile 'com.mikepenz:iconics-core:2.8.1@aar'
@@ -41,6 +41,10 @@ dependencies {
     // ButterKnife
     compile 'com.jakewharton:butterknife:8.4.0'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
+
+    // Icepick
+    compile 'frankiesardo:icepick:3.2.0'
+    apt 'frankiesardo:icepick-processor:3.2.0'
 
     // LeakCanary
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
@@ -66,7 +70,8 @@ dependencies {
     compile 'com.facebook.stetho:stetho-okhttp3:1.4.1'
 
     // Conductor
-    compile 'com.bluelinelabs:conductor:2.0.4'
+    compile 'com.bluelinelabs:conductor:2.0.5'
+    compile 'com.bluelinelabs:conductor-rxlifecycle2:2.0.5'
 
     // compile 'com.android.support:multidex:1.0.1'
 
