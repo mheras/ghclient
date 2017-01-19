@@ -1,4 +1,4 @@
-package com.ghclient.app.ui.util;
+package com.ghclient.app.util;
 
 import com.ghclient.app.BuildConfig;
 

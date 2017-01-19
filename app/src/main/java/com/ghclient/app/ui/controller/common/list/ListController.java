@@ -10,7 +10,7 @@ import com.ghclient.app.di.base.IControllerComponent;
 import com.ghclient.app.presentation.presenter.common.list.IListPresenter;
 import com.ghclient.app.presentation.view.common.list.IListView;
 import com.ghclient.app.ui.controller.common.base.BaseController;
-import com.ghclient.app.ui.util.Assertion;
+import com.ghclient.app.util.Assertion;
 import com.paginate.Paginate;
 
 import java.io.Serializable;
@@ -29,10 +29,6 @@ public abstract class ListController<PresenterType extends IListPresenter<ItemTy
     private boolean allItems;
 
     private boolean loading;
-
-    public ListController() {
-        super(null);
-    }
 
     @Override
     protected void onViewBound(@NonNull View view) {
